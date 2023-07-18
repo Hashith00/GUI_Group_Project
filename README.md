@@ -24,8 +24,8 @@ There are two main users
 
 1. Admin User
 - Username: admin
-- Password: 123456
+- Password: admin
 2. Normal User
 - Username: user
-- Password: 123456
+- Password: user
    
