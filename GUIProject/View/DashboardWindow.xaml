@@ -1,0 +1,212 @@
+﻿<Window x:Class="GUIProject.View.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUIProject.View"
+        xmlns:viewModel="clr-namespace:GUIProject.ViewModel"
+        mc:Ignorable="d"
+        Title="{Binding Title,UpdateSourceTrigger=PropertyChanged}"
+        WindowStartupLocation="CenterScreen"
+        Height="800" Width="1280">
+
+    <Window.DataContext>
+        <viewModel:DashboardWindowVM/>
+    </Window.DataContext>
+
+    <Grid Background="LightGray">
+        <Border RenderTransformOrigin="0.359,0.503">
+            <Border.Background>
+                <ImageBrush ImageSource="/Images/4.png"
+                        Stretch="UniformToFill"/>
+            </Border.Background>
+
+        </Border>
+
+        <ListView Name="UserItemList" 
+                  Background="#F4E7FF" 
+                  FontSize="20"
+                  FontFamily="Poppins"
+                  Foreground="#370466"
+                  
+                  Margin="0,97,10,0" IsSynchronizedWithCurrentItem="True"
+                  SelectedItem="{Binding SelectedUser, UpdateSourceTrigger=PropertyChanged}"
+                  ItemsSource="{Binding Users, UpdateSourceTrigger=PropertyChanged}"
+                  SelectionChanged="Listview_SelectionChanged"
+                  Height="295" VerticalAlignment="Top"
+                  Width="1000" HorizontalAlignment="Right">
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Clear" />
+                    
+                </ContextMenu>
+            </ListView.ContextMenu>
+
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Id" 
+                                    Width="100"
+                                    
+                                    DisplayMemberBinding="{Binding Id, UpdateSourceTrigger=PropertyChanged}"/>
+                    <GridViewColumn Header="User Name" 
+                                    Width="350" 
+                                    
+                                    DisplayMemberBinding="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                    <GridViewColumn Header="Password" 
+                                    Width="200" 
+                                    DisplayMemberBinding="{Binding Pasword, UpdateSourceTrigger=PropertyChanged}"/>
+                </GridView>
+
+            </ListView.View>
+        </ListView>
+        <TextBlock Text="Create a New User" Margin="272,407,508,317" FontSize="25" FontFamily="Poppins" FontWeight="Bold"/>
+
+        <ToggleButton x:Name="EditUserToggleButton"  
+                      IsChecked="{Binding IsEnabled, ElementName=EditUserGrid}"
+              HorizontalAlignment="Left" Margin="265,450,0,0" Width="200" Height="40" Background="#EFAF3A" Foreground="White" FontFamily="Poppins" FontSize="15"
+                      VerticalAlignment="Top" Content="Enebale Editor"  />
+
+
+
+        <Grid x:Name="EditUserGrid" IsEnabled="{Binding ElementName=EditUserToggleButton, Path=IsChecked}" 
+            Margin="265,499,0,0" VerticalAlignment="Top">
+
+            <Label Content="Name" 
+                   HorizontalAlignment="Left" 
+                   Margin="3,0,0,0" VerticalAlignment="Top" FontSize="15" FontFamily="Poppins"/>
+            <Label Content="Password" 
+                   HorizontalAlignment="Left"
+                   Margin="3,40,0,0" VerticalAlignment="Top" FontSize="15" FontFamily="Poppins"/>
+
+            <TextBox Name="UserNameTextBox" 
+                     Text="{Binding SelectedUser.Name, Mode=TwoWay}" 
+                     HorizontalAlignment="Left"
+                     Margin="150,00,0,0" 
+                     Width="302" Height="26" 
+                     VerticalAlignment="Top"
+                     FontSize="15" FontFamily="Poppins"
+                     />
+
+            <TextBox Name="UserPskTextBox"  
+                     Text="{Binding SelectedUser.Pasword, Mode=TwoWay}" 
+                     HorizontalAlignment="Left" 
+                     Margin="150,40,0,0" Width="302" 
+                     Height="26" VerticalAlignment="Top" FontSize="15" FontFamily="Poppins"/>
+
+        </Grid>
+
+        <Label x:Name="userlblBack" Content="Log Out" MouseLeftButtonDown="userlblBack_MouseLeftButtonDown" Foreground="#370466"
+                        FontSize="15" FontWeight="Normal" Margin="10,684,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Background="White" Height="100" Width="196" RenderTransformOrigin="0.5,0.5" Cursor="Hand" FontFamily="Poppins">
+
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="1" ScaleX="1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+
+            <Label.Template>
+                <ControlTemplate TargetType="Label">
+                    <Border Background="{TemplateBinding Background}" 
+                            CornerRadius="20" Width="170" Height="45" >
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Label.Template>
+
+        </Label>
+
+        <Button x:Name="CreateUserButton" Width="200" Height="60" Background="#370466"  FontFamily="Poppins" FontSize="15"
+                Command="{Binding InsertUserCommand}" 
+                HorizontalAlignment="Left" Margin="245,590,0,0" VerticalAlignment="Top" >
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Create New User" Foreground="White"/>
+            </StackPanel>
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Width="170" Height="40"
+                                            
+                                            CornerRadius="20"
+                                            Background="{TemplateBinding Background}" Margin="-30,6,-29,5" >
+
+                        <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+
+        </Button>
+
+
+
+        <Button x:Name="UpdateUserButton" Width="200" Height="60" Background="#370466"  FontFamily="Poppins" FontSize="15"
+                Command="{Binding UpdateUserCommand}"
+                HorizontalAlignment="Left" Margin="440,590,0,0" VerticalAlignment="Top" >
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Update DataBase" Foreground="White"/>
+            </StackPanel>
+
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Width="170" Height="40"
+                                            
+                                            CornerRadius="20"
+                                            Background="{TemplateBinding Background}" Margin="-30,6,-29,5" >
+
+                        <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <Button x:Name="DeleteUserButton" Width="200" Height="60" Background="#FF1616"  FontFamily="Poppins" FontSize="15"
+                Command="{Binding DeleteUserCommand}" 
+                HorizontalAlignment="Left" Margin="640,590,0,0" VerticalAlignment="Top" >
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Delete User" Foreground="White"/>
+            </StackPanel>
+
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Width="170" Height="40"
+                                            
+                                            CornerRadius="20"
+                                            Background="{TemplateBinding Background}" Margin="-30,6,-29,5" >
+
+                        <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <Button x:Name="DBStudLink" Click="DBStudLink_Click" HorizontalAlignment="Left" Margin="1070,32,0,0" VerticalAlignment="Top" Width="200" Height="60" Background="#370466"  FontFamily="Poppins" FontSize="15" >
+            <StackPanel Orientation="Horizontal">
+                <!--<Path Stretch="Uniform"  Data="M 364.71875 605.21875 C 363.61418 605.21875 362.71875 606.11418 362.71875 607.21875 L 362.71875 608.21875 L 359.71875 608.21875 C 359.16647 608.21875 358.71875 608.66647 358.71875 609.21875 C 358.71875 609.77103 359.16647 610.21875 359.71875 610.21875 L 360.71875 610.21875 L 360.71875 621.21875 C 360.71875 622.87565 362.0619 624.21875 363.71875 624.21875 L 371.71875 624.21875 C 373.37565 624.21875 374.71875 622.87565 374.71875 621.21875 L 374.71875 610.21875 L 375.71875 610.21875 C 376.27105 610.21875 376.71875 609.77103 376.71875 609.21875 C 376.71875 608.66647 376.27105 608.21875 375.71875 608.21875 L 372.71875 608.21875 L 372.71875 607.21875 C 372.71875 606.11418 371.82335 605.21875 370.71875 605.21875 L 364.71875 605.21875 z M 364.71875 607.21875 L 370.71875 607.21875 L 370.71875 608.21875 L 364.71875 608.21875 L 364.71875 607.21875 z M 362.71875 610.21875 L 372.71875 610.21875 L 372.71875 621.21875 C 372.71875 621.77105 372.27105 622.21875 371.71875 622.21875 L 363.71875 622.21875 C 363.16647 622.21875 362.71875 621.77105 362.71875 621.21875 L 362.71875 610.21875 z M 364.71875 612.21875 L 364.71875 620.21875 L 366.71875 620.21875 L 366.71875 612.21875 L 364.71875 612.21875 z M 368.71875 612.21875 L 368.71875 620.21875 L 370.71875 620.21875 L 370.71875 612.21875 L 368.71875 612.21875 z " Fill="#FF17314F" Width="15" Height="15" Margin="3,0,0,0"/>-->
+                <Label Content="View DataBase" Foreground="White"/>
+            </StackPanel>
+
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Width="170" Height="40"
+                                            
+                                            CornerRadius="20"
+                                            Background="{TemplateBinding Background}" Margin="-30,6,-29,5" >
+
+                        <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+
+
+    </Grid>
+
+
+</Window>
