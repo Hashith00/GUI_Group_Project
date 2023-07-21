@@ -14,7 +14,7 @@ namespace GUIProject.ViewModel
 
         public DbSet<Student> Students { get; set; }
 
-        public string path = @"C:\Users\REDTECH\Downloads\GUI_Group\new Edited\StudentData.db";
+        public string path = @"C:\Users\REDTECH\Downloads\GUI_Group\new Edited\UserDataBae.db";
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

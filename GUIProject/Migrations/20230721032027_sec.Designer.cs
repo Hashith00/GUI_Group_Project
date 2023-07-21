@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GUIProject.Migrations
 {
     [DbContext(typeof(UserDataContext))]
-    [Migration("20230718154009_sec")]
+    [Migration("20230721032027_sec")]
     partial class sec
     {
         /// <inheritdoc />

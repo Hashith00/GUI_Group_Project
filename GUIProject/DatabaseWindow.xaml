@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="{Binding Title,UpdateSourceTrigger=PropertyChanged}"
         WindowStartupLocation="CenterScreen"
-        Height="800" Width="1280">
+        Height="800" Width="1580">
 
     <Window.DataContext>
         <viewModel:DatabaseWindowVM/>
@@ -26,7 +26,7 @@
 
         <ListView Name="ItemList" 
                   Background="#F4E7FF" 
-                  FontSize="20"
+                  FontSize="15"
                   FontFamily="Poppins"
                   Foreground="#370466"
                   
@@ -34,7 +34,7 @@
                   SelectedItem="{Binding SelectedStudent, UpdateSourceTrigger=PropertyChanged}"
                   ItemsSource="{Binding Students, UpdateSourceTrigger=PropertyChanged}"
                   SelectionChanged="Listview_SelectionChanged" 
-                  Margin="283,92,5,0" Height="278" VerticalAlignment="Top">
+                  Margin="331,72,26,0" Height="320" VerticalAlignment="Top">
             <ListView.ContextMenu>
                 <ContextMenu>
 
@@ -43,10 +43,10 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Id" 
-                                    Width="100"  
+                                    Width="50"  
                                     DisplayMemberBinding="{Binding Id, UpdateSourceTrigger=PropertyChanged}"/>
                     <GridViewColumn Header="Name" 
-                                    Width="300" 
+                                    Width="150" 
                                     DisplayMemberBinding="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
                     <GridViewColumn Header="Age" 
                                     Width="100" 
@@ -60,6 +60,21 @@
                     <GridViewColumn Header="module3" 
                                     Width="100" 
                                     DisplayMemberBinding="{Binding Module3, UpdateSourceTrigger=PropertyChanged}"/>
+                    <GridViewColumn Header="module4" 
+                                    Width="100" 
+                                    DisplayMemberBinding="{Binding Module4, UpdateSourceTrigger=PropertyChanged}"/>
+                    <GridViewColumn Header="module5" 
+                                    Width="100" 
+                                    DisplayMemberBinding="{Binding Module5, UpdateSourceTrigger=PropertyChanged}"/>
+                    <GridViewColumn Header="module6" 
+                                    Width="100" 
+                                    DisplayMemberBinding="{Binding Module6, UpdateSourceTrigger=PropertyChanged}"/>
+                    <GridViewColumn Header="module7" 
+                                    Width="100" 
+                                    DisplayMemberBinding="{Binding Module7, UpdateSourceTrigger=PropertyChanged}"/>
+                    <GridViewColumn Header="module8" 
+                                    Width="100" 
+                                    DisplayMemberBinding="{Binding Module8, UpdateSourceTrigger=PropertyChanged}"/>
                     <GridViewColumn Header="GPA" 
                                     Width="100" 
                                     DisplayMemberBinding="{Binding GPA, UpdateSourceTrigger=PropertyChanged}"/>
@@ -68,15 +83,10 @@
         </ListView>
 
 
-        <!--<CheckBox x:Name="EnableCheckBox" Content="Edit / Add"  HorizontalAlignment="Left" Margin="10,230,0,0" VerticalAlignment="Top"/>
 
-        <Grid x:Name="EditGrid"
-              IsEnabled="{Binding ElementName=EnableCheckBox,Path=IsChecked}" 
-              Margin="3,260,0,0"  HorizontalAlignment="Stretch" 
-              VerticalAlignment="Top">-->
-        <TextBlock Text="Create a New User" Margin="272,407,508,317" FontSize="25" FontFamily="Poppins" FontWeight="Bold"/>
+        <TextBlock Text="Create a New User" Margin="331,409,449,312" FontSize="25" FontFamily="Poppins" FontWeight="Bold"/>
         <ToggleButton x:Name="EditToggleButton" Content="Enable Editing" 
-              HorizontalAlignment="Left" Margin="272,442,0,0" VerticalAlignment="Top" Width="200" Height="40" Background="#EFAF3A" Foreground="White" FontFamily="Poppins" FontSize="15"
+              HorizontalAlignment="Left" Margin="331,447,0,0" VerticalAlignment="Top" Width="200" Height="40" Background="#EFAF3A" Foreground="White" FontFamily="Poppins" FontSize="15"
               IsChecked="{Binding IsEnabled, ElementName=EditGrid}">
         </ToggleButton>
 
@@ -85,57 +95,96 @@
               IsEnabled="{Binding ElementName=EditToggleButton, Path=IsChecked}" 
       Margin="272,508,26,0" VerticalAlignment="Top">
 
-            <Label Content="Name" HorizontalAlignment="Left" Margin="3,0,0,0"  
+            <Label Content="Name" HorizontalAlignment="Left" Margin="61,-7,0,0"  
                    VerticalAlignment="Top" FontSize="15" FontFamily="Poppins"/>
             <Label Content="Age" HorizontalAlignment="Left"
-                   Margin="3,40,0,0" VerticalAlignment="Top" FontSize="15" FontFamily="Poppins"/>
+                   Margin="61,33,0,0" VerticalAlignment="Top" FontSize="15" FontFamily="Poppins"/>
 
-            <Label Content="EE3301" HorizontalAlignment="Left"
-                   Margin="0,115,0,0" VerticalAlignment="Top" FontSize="15" FontFamily="Poppins"/>
-            <Label Content="EE3302" HorizontalAlignment="Left"
-                   Margin="0,155,0,0" VerticalAlignment="Top" FontSize="15" FontFamily="Poppins"/>
-            <Label Content="EE3303" HorizontalAlignment="Left"
-                   Margin="0,195,0,0" VerticalAlignment="Top" FontSize="15" FontFamily="Poppins"/>
+            <Label Content="Module 1" HorizontalAlignment="Left"
+                   Margin="66,96,0,0" VerticalAlignment="Top" FontSize="15" FontFamily="Poppins"/>
+            <Label Content="Module 2" HorizontalAlignment="Left"
+                   Margin="66,136,0,0" VerticalAlignment="Top" FontSize="15" FontFamily="Poppins"/>
+            <Label Content="Module 3" HorizontalAlignment="Left"
+                   Margin="66,176,0,0" VerticalAlignment="Top" FontSize="15" FontFamily="Poppins"/>
 
-            <!--<Label Content="GPA" HorizontalAlignment="Left"
-                   Margin="570,40,0,0" VerticalAlignment="Top"/>-->
+
 
 
             <TextBox Name="NameTextBox" 
                       
                      Text="{Binding SelectedStudent.Name, Mode=TwoWay}"
                      HorizontalAlignment="Left"  
-                     Margin="70,0,0,0" Width="229" Height="26" 
+                     Margin="164,-7,0,0" Width="229" Height="26" 
                      VerticalAlignment="Top"
                      FontSize="15" FontFamily="Poppins"/>
 
             <TextBox Name="AgeTextBox" 
                      Text="{Binding SelectedStudent.Age, Mode=TwoWay}" 
                      HorizontalAlignment="Left" 
-                     Margin="70,40,0,0" Width="229" Height="26"
+                     Margin="164,36,0,0" Width="229" Height="26"
                      VerticalAlignment="Top"
                      FontSize="15" FontFamily="Poppins"/>
 
             <TextBox Name="Subject1_TextBox" 
                      Text="{Binding SelectedStudent.Module1, Mode=TwoWay}"
                      HorizontalAlignment="Left" 
-                     Margin="123,115,0,0" Width="176" Height="26"
+                     Margin="189,96,0,0" Width="176" Height="26"
                      VerticalAlignment="Top"
                      FontSize="15" FontFamily="Poppins"/>
 
             <TextBox Name="Subject2_TextBox" 
                      Text="{Binding SelectedStudent.Module2, Mode=TwoWay}" 
                      HorizontalAlignment="Left" 
-                     Margin="123,155,0,0" Width="176" Height="26"
+                     Margin="189,136,0,0" Width="176" Height="26"
                      VerticalAlignment="Top"
                      FontSize="15" FontFamily="Poppins"/>
 
             <TextBox Name="Subject3_TextBox" 
                      Text="{Binding SelectedStudent.Module3, Mode=TwoWay}" 
                      HorizontalAlignment="Left" 
-                     Margin="123,195,0,0" Width="176" Height="26"
+                     Margin="189,176,0,0" Width="176" Height="26"
                      VerticalAlignment="Top"
                      FontSize="15" FontFamily="Poppins"/>
+            <Label Content="Module 4" HorizontalAlignment="Left"
+                Margin="66,216,0,0" VerticalAlignment="Top" FontSize="15" FontFamily="Poppins"/>
+            <TextBox x:Name="Subject3_TextBox_Copy" 
+                Text="{Binding SelectedStudent.Module4, Mode=TwoWay}" 
+                HorizontalAlignment="Left" 
+                Margin="189,216,0,0" Width="176" Height="26"
+                VerticalAlignment="Top"
+                FontSize="15" FontFamily="Poppins"/>
+            <Label Content="Module 5" HorizontalAlignment="Left"
+                Margin="405,96,0,0" VerticalAlignment="Top" FontSize="15" FontFamily="Poppins"/>
+            <Label Content="Module 6" HorizontalAlignment="Left"
+                Margin="405,136,0,0" VerticalAlignment="Top" FontSize="15" FontFamily="Poppins"/>
+            <Label Content="Module 7" HorizontalAlignment="Left"
+                Margin="405,176,0,0" VerticalAlignment="Top" FontSize="15" FontFamily="Poppins"/>
+            <Label Content="Module 8" HorizontalAlignment="Left"
+                Margin="405,216,0,0" VerticalAlignment="Top" FontSize="15" FontFamily="Poppins"/>
+            <TextBox x:Name="Subject3_TextBox_Copy2" 
+                Text="{Binding SelectedStudent.Module6, Mode=TwoWay}" 
+                HorizontalAlignment="Left" 
+                Margin="528,136,0,0" Width="176" Height="26"
+                VerticalAlignment="Top"
+                FontSize="15" FontFamily="Poppins"/>
+            <TextBox x:Name="Subject3_TextBox_Copy3" 
+                Text="{Binding SelectedStudent.Module5, Mode=TwoWay}" 
+                HorizontalAlignment="Left" 
+                Margin="528,95,0,0" Width="176" Height="26"
+                VerticalAlignment="Top"
+                FontSize="15" FontFamily="Poppins"/>
+            <TextBox x:Name="Subject3_TextBox_Copy4" 
+                Text="{Binding SelectedStudent.Module8, Mode=TwoWay}" 
+                HorizontalAlignment="Left" 
+                Margin="528,216,0,0" Width="176" Height="26"
+                VerticalAlignment="Top"
+                FontSize="15" FontFamily="Poppins"/>
+            <TextBox x:Name="Subject3_TextBox_Copy5" 
+                Text="{Binding SelectedStudent.Module7, Mode=TwoWay}" 
+                HorizontalAlignment="Left" 
+                Margin="528,176,0,0" Width="176" Height="26"
+                VerticalAlignment="Top"
+                FontSize="15" FontFamily="Poppins"/>
 
             <!--<TextBox Name="GPA_TextBox" 
                      Text="{Binding SelectedStudent.GPA, Mode=TwoWay}" 
@@ -151,7 +200,7 @@
                         FontWeight="Normal"
                         FontSize="14"
                         Cursor="Hand"
-                        Margin="25,686,0,0"
+                        Margin="54,677,0,0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
                         MouseLeftButtonDown="lblBack_MouseLeftButtonDown" 
@@ -186,7 +235,7 @@
 
         <Button x:Name="CreateButton" HorizontalAlignment="Left" Width="200" Height="60" Background="#370466"  FontFamily="Poppins" FontSize="15"
                 Command="{Binding InsertStudentCommand}"
-                Margin="522,699,0,0" VerticalAlignment="Top" >
+                Margin="1145,647,0,0" VerticalAlignment="Top" >
             <StackPanel Orientation="Horizontal">
                 <Label Content="Create " Foreground="White"/>
             </StackPanel>
@@ -207,11 +256,11 @@
 
 
 
-        
+
 
         <Button x:Name="UpdateButton" HorizontalAlignment="Left" Width="200" Height="60" Background="#370466"  FontFamily="Poppins" FontSize="15"
                 Command="{Binding UpdateStudentCommand}" 
-                Margin="722,699,0,0" VerticalAlignment="Top" >
+                Margin="1350,647,0,0" VerticalAlignment="Top" >
             <StackPanel Orientation="Horizontal">
                 <Label Content="Update DataBase" Foreground="White"/>
             </StackPanel>
@@ -230,7 +279,7 @@
             </Button.Template>
         </Button>
 
-        <Button x:Name="DeleteButton" HorizontalAlignment="Left" Margin="927,699,0,0" Width="200" Height="60" Background="#FF1616"  FontFamily="Poppins" FontSize="15" 
+        <Button x:Name="DeleteButton" HorizontalAlignment="Left" Margin="1145,707,0,0" Width="200" Height="60" Background="#FF1616"  FontFamily="Poppins" FontSize="15" 
                 Command="{Binding DeleteStudentCommand}" 
                 VerticalAlignment="Top" >
             <StackPanel Orientation="Horizontal">
@@ -251,7 +300,9 @@
             </Button.Template>
 
         </Button>
-        <TextBlock Text="Add User Results" Margin="272,585,508,134" FontSize="20" FontFamily="Poppins" FontWeight="SemiBold"/>
+        <TextBlock Text="Add User Results" Margin="355,600,1058,337" FontSize="20" FontFamily="Poppins" FontWeight="SemiBold"/>
+        <TextBlock Text="DataBase" Margin="331,22,449,699" FontSize="25" FontFamily="Poppins" FontWeight="Bold"/>
+        <TextBlock Text="FOE | UOR" Margin="96,22,1300,699" FontSize="25" FontFamily="Poppins" FontWeight="Bold" Foreground="White"/>
 
         <!--<DataGrid ItemsSource="{Binding Students}" Margin="372,293,0,0"/>-->
 

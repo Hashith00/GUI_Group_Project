@@ -32,6 +32,21 @@ namespace GUIProject.ViewModel
         public double module3;
 
         [ObservableProperty]
+        public double module4;
+
+        [ObservableProperty]
+        public double module5;
+
+        [ObservableProperty]
+        public double module6;
+
+        [ObservableProperty]
+        public double module7;
+
+        [ObservableProperty]
+        public double module8;
+
+        [ObservableProperty]
         public double gpa;
 
         [ObservableProperty]

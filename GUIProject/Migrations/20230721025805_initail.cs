@@ -5,7 +5,7 @@
 namespace GUIProject.Migrations
 {
     /// <inheritdoc />
-    public partial class iniyal : Migration
+    public partial class initail : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -21,11 +21,11 @@ namespace GUIProject.Migrations
                     Module1 = table.Column<double>(type: "REAL", nullable: false),
                     Module2 = table.Column<double>(type: "REAL", nullable: false),
                     Module3 = table.Column<double>(type: "REAL", nullable: false),
-                    Module4 = table.Column<double>(type: "REAL", nullable: true),
-                    Module5 = table.Column<double>(type: "REAL", nullable: true),
-                    Module6 = table.Column<double>(type: "REAL", nullable: true),
-                    Module7 = table.Column<double>(type: "REAL", nullable: true),
-                    Module8 = table.Column<double>(type: "REAL", nullable: true),
+                    Module4 = table.Column<double>(type: "REAL", nullable: false),
+                    Module5 = table.Column<double>(type: "REAL", nullable: false),
+                    Module6 = table.Column<double>(type: "REAL", nullable: false),
+                    Module7 = table.Column<double>(type: "REAL", nullable: false),
+                    Module8 = table.Column<double>(type: "REAL", nullable: false),
                     GPA = table.Column<double>(type: "REAL", nullable: false)
                 },
                 constraints: table =>

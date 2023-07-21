@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GUIProject.Migrations
 {
     [DbContext(typeof(UserDataContext))]
-    [Migration("20230718145749_iniyal")]
-    partial class iniyal
+    [Migration("20230721025805_initail")]
+    partial class initail
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
